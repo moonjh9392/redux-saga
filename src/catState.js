@@ -8,9 +8,11 @@ export const catslice = createSlice({
   },
   reducers: {
     getCatsFetch: (state) => {
+      console.log('11');
       state.isLoading = true;
     },
     getCatsSuccess: (state, action) => {
+      console.log('22');
       state.cats = action.payload;
       state.isLoading = false;
     },
@@ -21,4 +23,4 @@ export const catslice = createSlice({
 });
 
 export const { getCatsFetch, getCatsSuccess, getCatsFailure } = catslice.actions;
-export default catslice.reducers;
+export default catslice.reducer;
