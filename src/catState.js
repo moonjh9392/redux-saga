@@ -1,4 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { all } from 'redux-saga/effects';
+import catSaga from './catSaga';
 
 export const catslice = createSlice({
   name: 'cat',
@@ -21,6 +23,11 @@ export const catslice = createSlice({
     },
   },
 });
+
+export function* rootSaga() {
+  // all 은 여러 사가를 동시에 실행시켜준다. 현재는 animalSaga 하나.
+  yield all([catSaga]);
+}
 
 export const { getCatsFetch, getCatsSuccess, getCatsFailure } = catslice.actions;
 export default catslice.reducer;
